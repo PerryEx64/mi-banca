@@ -11,6 +11,14 @@ export const DataUsers = [
     account_number: 2468101214,
     account_type: 'monetaria',
     money: 5000,
+    type: 'user',
+    card: [
+      { 
+        name: 'Israel Aguilar', 
+        type: 'debito',
+        number_card: 245689654125 
+      }
+    ],
     history: [
       {
         type: 'debito',
@@ -37,6 +45,7 @@ export const DataUsers = [
     name: 'Carlos',
     money: 3500,
     lastname: 'Lagos',
+    type: 'user',
     account_number: 8746523569,
     account_type: 'ahorro',
     history: []
@@ -44,10 +53,23 @@ export const DataUsers = [
   {
     user: 'asamuel',
     name: 'Samuel',
-    money: 3500,
     lastname: 'Aguilar',
+    type: 'admin',
     account_number: 1234567891,
     account_type: 'ahorro',
     history: []
+  }
+]
+
+export const DataSolicitudDeTarjeta = [
+  {
+    name: 'Brian Aguilar',
+    ingresos: 4500,
+    direccion: '18 calle, entre 16 y 17 avenida'
+  },
+  {
+    name: 'Mirza Aguilar',
+    ingresos: 3250,
+    direccion: '4 avenida, entre 5 y 6 calle, puerto barrios izabal'
   }
 ]
