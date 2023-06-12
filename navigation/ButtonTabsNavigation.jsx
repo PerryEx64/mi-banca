@@ -5,6 +5,7 @@ import Perfil from '../src/Perfil/index'
 import Historial from '../src/Historial/index'
 import Transferencias from '../src/Transferencias/index'
 import EstadoCuenta from '../src/EstadoCuenta/index'
+import ProfileNavigation from './ProfileNavigation'
 
 const Tab = createBottomTabNavigator()
 
@@ -12,15 +13,17 @@ function ButtonTabsNavigation() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Perfil"
-        component={Perfil}
+        name="ProfileNavigation"
+        component={ProfileNavigation}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
               style={styles.img}
               source={require('../assets/perfil.png')}
             />
-          )
+          ),
+          title: 'Perfil',
+          headerShown: false
         }}
       />
       <Tab.Screen
@@ -47,7 +50,7 @@ function ButtonTabsNavigation() {
           )
         }}
       />
-      <Tab.Screen
+     {/*  <Tab.Screen
         name="EstadoCuenta"
         component={EstadoCuenta}
         options={{
@@ -58,7 +61,7 @@ function ButtonTabsNavigation() {
             />
           )
         }}
-      />
+      /> */}
     </Tab.Navigator>
   )
 }

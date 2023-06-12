@@ -5,17 +5,22 @@ import BtnSignOut from './components/BtnSignOut'
 import { MainContext } from '../../context/MainContext'
 import { FontAwesome } from '@expo/vector-icons'
 import { currencyFormatter } from '../../adapters/currency.adapters'
+import BtnSettings from './components/BtnSettings'
 
 const Perfil = () => {
   const { dataUser } = useContext(MainContext)
   return (
     <Layout style={styles.container} level='1' >
       <View style={styles.content}>
+        <View style={styles.header} >
+          <View/>
         <Avatar
           size="giant"
           source={require(`../../assets/avatar2.png`)}
           style={styles.img}
-        />
+          />
+          <BtnSettings />
+          </View>
         <View style={{ height: '60%', justifyContent: 'space-around' }}>
           <Input
             value={`${dataUser.name} ${dataUser.lastname} `}
@@ -64,7 +69,13 @@ const styles = StyleSheet.create({
   img: {
     width: 95,
     height: 95,
-    alignSelf: 'center',
+
     marginTop: 3
+  },
+  header: {
+    justifyContent: 'space-between',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })

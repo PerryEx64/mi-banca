@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
-import { Button, Input, Text } from '@ui-kitten/components/ui'
+import { Button, Input, Layout, Text } from '@ui-kitten/components/ui'
 import React, { useContext } from 'react'
-import { StyleSheet, View, Alert } from 'react-native'
+import { StyleSheet, View, Alert, TouchableOpacity } from 'react-native'
 import { UsersCredential as credential, DataUsers } from '../../utils/constants'
 import { MainContext } from '../../context/MainContext'
 
@@ -20,8 +20,14 @@ const Login = () => {
        */
       const result = DataUsers.filter((data) => data.user === user)
       setDataUser(result[0])
+
+      if(result[0].type === 'admin') {
+
+        return navigation.navigate('Admin')
+      } else {
+        return navigation.navigate('Main')
+      }
       
-      return navigation.navigate('Main')
     }
     Alert.alert(
       'Credenciales invalidas',
@@ -30,7 +36,7 @@ const Login = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <Layout style={styles.container} >
       <View style={styles.content}>
         <Text category="h3" style={styles.title}>
           {'Inicio de Sesion'}
@@ -61,8 +67,15 @@ const Login = () => {
         >
           Iniciar Sesion
         </Button>
+
+        <View style={{flexDirection: 'row', marginTop: 15, alignSelf: 'center'}} >
+          <Text>{'Aun no tienes una cuenta?'}</Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('Crearcuenta') }} style >
+          <Text status='primary' style={{marginLeft: 5}} >{'creala aqui'}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </Layout>
   )
 }
 
