@@ -1,4 +1,4 @@
-const API_DOMAIN = 'https://us-central1-move-app-gt.cloudfunctions.net/api/'
+const API_DOMAIN = ' http://127.0.0.1:3000/auth/'
 const HeadersPrueba = (token) => {
   return {
     'Content-Type': 'application/json',
@@ -6,16 +6,26 @@ const HeadersPrueba = (token) => {
   }
 }
 
-export const GetOneCollection = async (collection) => {
-  const jsonValue = await AsyncStorage.getItem('@token')
-  const tokenResponse = jsonValue != null ? JSON.parse(jsonValue) : null
-  const response = await fetch(
-    `${API_DOMAIN}GetAllCollection?collection=${collection}`,
-    {
-      method: 'GET',
-      headers: HeadersPrueba(tokenResponse)
-    }
-  )
+//Registro de usuarios
+export const Register = async (body) => {
+  const response = await fetch('http://127.0.0.1:3000/auth/register', {
+    method: 'POST',
+    body: body
+  })
   const data = await response.json()
   return data
 }
+
+/**
+ * Solicitudes para guardar informacion
+ */
+
+/**
+ * Solicitudes para eliminar informacion
+ */
+
+/**
+ *
+ */
+
+//cierre de cuenta
